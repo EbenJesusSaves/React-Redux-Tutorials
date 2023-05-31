@@ -5,25 +5,25 @@ export const TestingUsers = () => {
     getVal(e.target.name, e.target.value);
   };
 
-  const intialState = { name: "", number: "", city: "" };
+  const intialState = { name: "", phone: "", city: "" };
 
   const addName = (state, action) => {
-    console.log(action.type);
+    console.log(action.type + " action logging");
     switch (action.type) {
       case "name": {
         return {
+          ...state,
           name: action.name,
         };
       }
       case "phone": {
         return {
-          number: action.phone,
+          ...state,
+          king: action.phone,
         };
       }
       case "city": {
-        return {
-          city: action.city,
-        };
+        return { ...state, city: action.city };
       }
     }
   };
@@ -31,23 +31,19 @@ export const TestingUsers = () => {
 
   console.log(state);
   const getVal = (name, value) => {
-    // if (name === "name") {
-    //   console.log("hek");
-    // } else if (name === "phone") {
-    //   console.log("Ya nya Phone ");
-    // } else if (name === "city") {
-    //   console.log("Faade");
-    // }
-    console.log(name);
+    console.log(name + " this is what is running");
     switch (name) {
       case "name": {
         dispatcher({ type: "name", name: value });
+        break;
       }
       case "phone": {
-        dispatcher({ type: "phone", number: value });
+        dispatcher({ type: "phone", king: value });
+        break;
       }
       case "city": {
         dispatcher({ type: "city", city: value });
+        break;
       }
     }
   };
